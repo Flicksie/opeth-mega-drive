@@ -1,0 +1,11 @@
+*.bat
+.vscode
+out/
+*.png
+*.vgm
+*.psd
+*.wav
+*.res
+*.act
+tracklist.*
+xgm_*
