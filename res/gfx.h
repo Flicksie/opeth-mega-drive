@@ -8,6 +8,7 @@ extern const SpriteDefinition shadow_mask_7;
 extern const Image bg;
 extern const Image starfield;
 extern const Image music_logo;
+extern const Image music_logo_b;
 extern const Image progress_bar;
 
 #endif // _RES_GFX_H_
