@@ -8,8 +8,8 @@ const ROMHeader rom_header = {
     "SEGA MEGA DRIVE ",
 #endif
     "(C)FLK 2021     ",
-    "TRACK TRACK THINGY                               ",
-    "TRACK TRACK THING                               ",
+    "TRACK TRACK THINGY                              ",
+    "TRACK TRACK THINGY                              ",
     "GM 00000000-00",
     0x000,
     "JD              ",
@@ -26,6 +26,6 @@ const ROMHeader rom_header = {
     0x00200000,
     0x0020FFFF,
     "            ",
-    "DEMO DEMO WAWA                             ",
+    "DEMO DEMO WAWA                          ",
     "JUE             "
 };
