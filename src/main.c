@@ -606,7 +606,7 @@ static void drawStaticGUI()
     VDP_drawImageEx(WINDOW, &music_logo, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
     VDP_drawImageEx(WINDOW, &progress_bar, TILE_ATTR_FULL(PAL0, TRUE, FALSE, FALSE, tileIndexProgressBar), 9, 8, FALSE, TRUE);
     // starfield
-    VDP_drawImageEx(BG_B, &starfield, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile + music_logo.tileset->numTile + progress_bar.tileset->numTile), 0, 0, FALSE, TRUE);
+    //VDP_drawImageEx(BG_B, &starfield, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile + music_logo.tileset->numTile + progress_bar.tileset->numTile), 0, 0, FALSE, TRUE);
 
     // prepare 'bitTileMap' buffer for chips state rendering
     i = 0;
@@ -944,6 +944,29 @@ static void drawPlayList()
     VDP_setTextPlane(WINDOW);
 }
 
+
+static void drawAlbumArt(int index)
+{    
+
+    Image art;
+
+    switch (index) {
+        case 0:
+            art = music_logo_b;
+            break;
+        default: 
+            art = music_logo;
+            break;        
+    }
+
+
+
+VDP_waitVSync();
+    VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, 0x0381), 21, 0, FALSE, TRUE);
+    VDP_setPalette(PAL2, art.palette->data);
+}
+
+
 static void drawShortTrackInfo(s16 planIndex, u16 index)
 {
     u16 posY;
@@ -954,6 +977,7 @@ static void drawShortTrackInfo(s16 planIndex, u16 index)
     char str[80];
     char *src;
     char *dst;
+
 
     posY = planIndex & 63;
     cachedIndex = index;
@@ -1000,6 +1024,8 @@ static void drawShortTrackInfo(s16 planIndex, u16 index)
     {
         VDP_setTextPalette(PAL2);
         VDP_drawText( str , 1, posY);
+        
+        drawAlbumArt(index);
 
         VDP_setTextPalette(PAL0);
         VDP_drawText( info->trackName , 4, posY);
