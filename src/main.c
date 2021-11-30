@@ -38,6 +38,9 @@
 }
 
 
+
+
+
 const u16 gfx_palette[16] =
 {
     0x0422,     // 0 : #112 // #223 - black 
@@ -113,7 +116,7 @@ static void hint();
 extern s16 xgmTempoCnt;
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 14;
+vu16 numMusic = 13;
 
 // track infos cache
 static XD3 trackInfos[MAX_MUSIC];
@@ -123,6 +126,7 @@ static u16 inverseIndexes[MAX_MUSIC];
 static u16 planTrackIndexesCache[64];
 
 // current track info
+static s16 trackLast;
 static s16 trackPlayedRawIndex;
 static s16 trackPlayed;
 static s16 trackIndexList;
@@ -188,6 +192,35 @@ static u8 psgTileBuffer[32*4*4];
 
 static u16 palette[64];
 
+static void drawAlbumArt(s16 index)
+{    
+    if (trackLast == index) return;
+    trackLast = index;
+    Image art;
+    PAL_fadeOutPalette(2,20,FALSE);
+
+    SYS_disableInts();
+    
+   //if (index % 13 == 0) art = music_logo_b;
+      switch (index) {
+        case 0:
+        case 2:
+        case 4:
+        case 6:
+            art = music_logo_b;
+            break;
+        default: 
+            art = music_logo;
+            break;        
+    }
+    //else art = music_logo;
+    SYS_enableInts();    
+    
+    VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
+    
+    PAL_fadeInPalette(2,art.palette->data,60,TRUE);
+    
+};
 
 int main()
 {
@@ -283,6 +316,7 @@ int main()
     // draw static GUI & init BG scrolling
     drawStaticGUI();
     initBGScroll();
+    
 
     // init Sprite engine
     SPR_initEx(80);
@@ -340,8 +374,8 @@ int main()
     memcpy(&palette[2 * 16], music_logo.palette->data, 16 * 2);
     memcpy(&palette[3 * 16], shadow_mask_16.palette->data, 16 * 2);
     // set hilight/shadow operators to black color
-    palette[62] = 0x211;
-    palette[63] = 0x211;
+    //palette[62] = 0x211;
+    //palette[63] = 0x211;
 
     // palette fading
     VDP_fadeAll(palette_black, palette, 30, FALSE);
@@ -465,7 +499,9 @@ int main()
         // do that last
         doJoyActions();
         // need to start music
-        if (wantStartPlay) startPlay();
+        if (wantStartPlay){
+            startPlay();
+        }
     }
 
     return 0;
@@ -477,6 +513,8 @@ static void startPlay()
     trackInfo = getTrackInfo(shuffledIndexes[trackPlayed]);
     // move to played track
     trackIndexList = trackPlayedRawIndex;
+    drawAlbumArt(trackPlayedRawIndex);
+    
     elapsed = 0;
     paused = FALSE;
     playStateCnt = 0;
@@ -591,7 +629,15 @@ static void initZ80CPUMeter()
     // init load
     cpuload = 0;
     dmawaitload = 0;
-}
+};
+
+
+
+//arts[0] = 1;
+
+
+
+
 
 static void drawStaticGUI()
 {
@@ -605,6 +651,7 @@ static void drawStaticGUI()
     VDP_drawImageEx(WINDOW, &bg, TILE_ATTR_FULL(PAL0, TRUE, FALSE, FALSE, TILE_USERINDEX), 0, 0, FALSE, TRUE);
     VDP_drawImageEx(WINDOW, &music_logo, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
     VDP_drawImageEx(WINDOW, &progress_bar, TILE_ATTR_FULL(PAL0, TRUE, FALSE, FALSE, tileIndexProgressBar), 9, 8, FALSE, TRUE);
+    
     // starfield
     //VDP_drawImageEx(BG_B, &starfield, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile + music_logo.tileset->numTile + progress_bar.tileset->numTile), 0, 0, FALSE, TRUE);
 
@@ -835,6 +882,8 @@ static void updateProgressBar(u16 level)
     needProgressUpload = TRUE;
 }
 
+
+
 static void drawTrackInfo()
 {
     // not playing ?
@@ -855,6 +904,10 @@ static void drawTrackInfo()
     {
         u16 len;
         char str[41];
+        
+        
+        
+        
 
         len = strlen(trackInfo->trackName);
         if (len > 30)
@@ -865,10 +918,12 @@ static void drawTrackInfo()
         else strcpy(str, trackInfo->trackName);
 
         // track name
+        VDP_setTextPalette(PAL1);
         SYS_disableInts();
         VDP_clearText(8, 9, 30);
         VDP_drawText(str, 8, 9);
         SYS_enableInts();
+        VDP_setTextPalette(PAL0);
 
         len = strlen(trackInfo->gameName);
         if (len > 17)
@@ -912,8 +967,12 @@ static void drawTrackInfo()
         // date
         SYS_disableInts();
         //VDP_clearText(32, 11, 8);
-        VDP_drawText("test", 32, 11);
+        
+
         SYS_enableInts();
+
+
+        
     }
 }
 
@@ -940,31 +999,12 @@ static void drawPlayList()
         if (trackInd >= numMusic) trackInd = 0;
     }
 
+
     // restore previous value
     VDP_setTextPlane(WINDOW);
+    
 }
 
-
-static void drawAlbumArt(int index)
-{    
-
-    Image art;
-
-    switch (index) {
-        case 0:
-            art = music_logo_b;
-            break;
-        default: 
-            art = music_logo;
-            break;        
-    }
-
-
-
-VDP_waitVSync();
-    VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, 0x0381), 21, 0, FALSE, TRUE);
-    VDP_setPalette(PAL2, art.palette->data);
-}
 
 
 static void drawShortTrackInfo(s16 planIndex, u16 index)
@@ -1019,21 +1059,19 @@ static void drawShortTrackInfo(s16 planIndex, u16 index)
     *dst = 0;
 
     SYS_disableInts();
+    VDP_setTextPalette(PAL3);
 
     if (index == trackPlayed)
     {
-        VDP_setTextPalette(PAL2);
-        VDP_drawText( str , 1, posY);
-        
-        drawAlbumArt(index);
 
+        VDP_drawText( str , 1, posY);
         VDP_setTextPalette(PAL0);
         VDP_drawText( info->trackName , 4, posY);
-
+        //drawAlbumArt( trackIndexList );
     }
     else
     {
-        VDP_setTextPalette(PAL2);
+        
         VDP_drawText( str , 1, posY);
         VDP_setTextPalette(PAL1);
         VDP_drawText( info->trackName , 4, posY);
