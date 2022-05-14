@@ -25,8 +25,6 @@ void processStateMenu(){
     XGM_setPCM(AKER_SEGA, akersega, sizeof(akersega));
 
     VDP_setPaletteColor(0, RGB24_TO_VDPCOLOR(0x000000));
-
-
     
 
     SPR_init();
@@ -46,10 +44,7 @@ void processStateMenu(){
         SYS_doVBlankProcess();
     };
     XGM_startPlayPCM(AKER_SEGA,1,SOUND_PCM_CH2);
-    
-        //                              X   Y
 
-    
 
     //Update
     while(currentState == STATE_MENU){
