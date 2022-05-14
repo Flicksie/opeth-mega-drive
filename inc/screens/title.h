@@ -1,6 +1,6 @@
 #ifndef SCREEN_TITLE_H
 #define SCREEN_TITLE_H
 
-void processStatePlay();
+void processStateMenu();
 
 #endif // TRACKLIST_H
