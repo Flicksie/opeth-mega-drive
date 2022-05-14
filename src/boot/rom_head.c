@@ -7,10 +7,10 @@ const ROMHeader rom_header = {
 #else
     "SEGA MEGA DRIVE ",
 #endif
-    "(C)FLK 2021.NOV ",
-    "TRACK TRACK THINGY                              ",
-    "TRACK TRACK THINGY                              ",
-    "GM 05502101-01",
+    "(C)FLK 2022.MAY ",
+    "OPETH MUSIC CARTRIDGE                           ",
+    "OPETH MUSIC CARTRIDGE                           ",
+    "GM 05502205-12",
 //       ID YR # REV
     0x000,
     "J6              ",
