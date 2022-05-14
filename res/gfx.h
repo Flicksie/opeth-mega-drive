@@ -9,6 +9,8 @@ extern const Image bg;
 extern const Image starfield;
 extern const Image music_logo;
 extern const Image music_logo_b;
+extern const Image music_logo_c;
+extern const Image music_logo_d;
 extern const Image progress_bar;
 
 #endif // _RES_GFX_H_
