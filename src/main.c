@@ -1,28 +1,17 @@
 #include <genesis.h>
 
-#include "tracklist.h"
-#include "xgm_tool.h"
-#include "ym_state.h"
-#include "psg_state.h"
-#include "xd3.h"
-#include "log_tab.h"
-
-#include "smp_null.h"
-#include "music.h"
-#include "gfx.h"
-#include "font.h"
-
 
 #include "joy_handler.h"
 #include "screen_state.h"
 #include "screens/title.h"
 #include "screens/player.h"
-#include "screens/test.h"
+#include "screens/menu.h"
+#include "screens/info.h"
 
 
 void basicInit(){
     JOY_init();
-    currentState = STATE_MENU;
+    currentState = STATE_LOGO;
 }
 
 
@@ -33,11 +22,19 @@ int main()
     while(1){
 
         switch(currentState){
-            case STATE_MENU:{
+            case STATE_LOGO:{
                 processStateMenu();
                 break;
             }
-            case STATE_PLAY:{
+            case STATE_INFO:{
+                infoScreen();
+                break;
+            }
+            case STATE_MENU:{
+                menuScreen();
+                break;
+            }
+            case STATE_PLAYER:{
                 playerScreen();
                 break;
             }
