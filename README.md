@@ -27,9 +27,7 @@ A compilation of my Opeth fans friends favorite songs transcribed for playing on
 
 
 Currently the resource folders are all missing so unfortunately you can't build the ROM yourself :( 
-
 I'll eventually upload everything once I'm mostly done with it
-
 You can still find a working ROM in the Releases. 
 
 **This ROM was tested and works on real hardware.** 
