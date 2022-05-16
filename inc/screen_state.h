@@ -3,8 +3,10 @@
 
 typedef enum
 {
+    STATE_LOGO,
     STATE_MENU,
-    STATE_PLAY
+    STATE_PLAYER,
+    STATE_INFO
 } GAME_STATE;
 
 GAME_STATE currentState;
