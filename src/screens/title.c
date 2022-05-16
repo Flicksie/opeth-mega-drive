@@ -20,7 +20,7 @@ void processStateMenu(){
     u16 timer2 = 30;
 
     //Init
-    JOY_setEventHandler(&joyHandlerMenu);
+    JOY_setEventHandler(&joyHandlerTitle);
 
     XGM_setPCM(AKER_SEGA, akersega, sizeof(akersega));
 
@@ -47,18 +47,24 @@ void processStateMenu(){
 
 
     //Update
-    while(currentState == STATE_MENU){
+    while(currentState == STATE_LOGO){
         SPR_update();
         SYS_doVBlankProcess();
         timer--;
         if(timer == 0){
-            currentState = STATE_PLAY;
+            currentState = STATE_MENU;
         }
        
     }
-
+    JOY_setEventHandler(NULL);
     PAL_fadeOutPalette(3,30,FALSE);
-    //Cleanup
-    VDP_clearText(10, 13, 10);
+    XGM_stopPlayPCM(SOUND_PCM_CH2);
+    
+    //Cleanup    
+    VDP_clearText(1, 26, 26);
+    SPR_clear();
+    SPR_end();
+
+    SYS_doVBlankProcess();
 
 }
