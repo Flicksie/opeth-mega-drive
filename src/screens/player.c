@@ -46,7 +46,7 @@
 
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 5;
+vu16 numMusic = 6;
 
 const u16 gfx_palette[16] =
 {
@@ -327,7 +327,6 @@ static void preparePlayerState(u16 i){
     // init shuffle list
     buildShuffledList();
 
-    VDP_loadFont(custom_font.tileset, DMA);
     VDP_loadFont(custom_font.tileset, DMA);
  
 
