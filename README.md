@@ -24,3 +24,12 @@ A compilation of my Opeth fans friends favorite songs transcribed for playing on
 
 
 *Some songs might be cut here and there to save some cartridge space (or my sanity while transcribing them)*
+
+
+Currently the resource folders are all missing so unfortunately you can't build the ROM yourself :( 
+
+I'll eventually upload everything once I'm mostly done with it
+
+You can still find a working ROM in the Releases. 
+
+**This ROM was tested and works on real hardware.** 
