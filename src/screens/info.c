@@ -2,6 +2,7 @@
 
 #include "screen_state.h"
 #include "gfx.h"
+#include "music.h"
 #include "font.h"
 
 
@@ -14,6 +15,7 @@ void joyHandler(u16 joy, u16 changed, u16 state)
 void infoScreen(){
 
 
+    XGM_startPlay(wpane_mini);
 
     JOY_setEventHandler(NULL); 
     JOY_init();
@@ -75,6 +77,7 @@ void infoScreen(){
        
     }
 
+    XGM_stopPlay();
     PAL_fadeOutAll(30, TRUE);
     //Cleanup
 
@@ -82,5 +85,6 @@ void infoScreen(){
     VDP_clearPlane(WINDOW, TRUE);
     VDP_clearPlane(BG_B, TRUE);
     VDP_clearPlane(BG_A, TRUE);
+
 
 }

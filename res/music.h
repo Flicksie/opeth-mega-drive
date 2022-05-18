@@ -7,6 +7,8 @@ extern const u8 pcm_hat2[5632];
 extern const u8 pcm_voice[41728];
 extern const u8 pcm_snare1[9472];
 extern const u8 pcm_snare2[3840];
+extern const u8 wpane_mini[2304];
+extern const u8 brose_mini[33536];
 extern const u8 xgm_1[212992];
 extern const u8 xgm_2[150272];
 extern const u8 xgm_3[10496];

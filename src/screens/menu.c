@@ -13,6 +13,7 @@ int cursor_position;
 
 int X_POS_MENU = 15;
 int Y_POS_MENU = 24;
+int CURSOR_POS_MAX = 0;
 
 #define DELIVERANCE 64
 
@@ -28,8 +29,8 @@ void joyHandlerMenu(u16 joy, u16 changed, u16 state)
         cursor_position+= 1;
     }
 
-    if (cursor_position < 0) cursor_position = 1;
-    if (cursor_position > 1) cursor_position = 0;
+    if (cursor_position < 0) cursor_position = CURSOR_POS_MAX;
+    if (cursor_position > CURSOR_POS_MAX) cursor_position = 0;
 
     if( state & (BUTTON_START | BUTTON_C) ) { 
         if ( cursor_position == 0 ) {
@@ -55,6 +56,8 @@ void joy_actions(u16 j, u16 u, u16 s){
 }
 
 void menuScreen(){
+
+    XGM_startPlay(brose_mini);
 
     cursor_position = 0;
     PAL_setColor(15, 0xfff);
@@ -83,7 +86,7 @@ void menuScreen(){
     VDP_setTextPalette(PAL0);
     
     VDP_drawText("Start Player", X_POS_MENU, Y_POS_MENU);
-    VDP_drawText("Information", X_POS_MENU, Y_POS_MENU+1);
+    //VDP_drawText("Information", X_POS_MENU, Y_POS_MENU+1);
     JOY_init();
 
     
@@ -110,7 +113,7 @@ void menuScreen(){
 
             VDP_setTextPalette(PAL0);
             VDP_drawText("Start Player", X_POS_MENU, Y_POS_MENU);
-            VDP_drawText("Information", X_POS_MENU, Y_POS_MENU+1);
+            //VDP_drawText("Information", X_POS_MENU, Y_POS_MENU+1);
         }
   
         
@@ -135,7 +138,7 @@ void menuScreen(){
         SYS_doVBlankProcess();
        
     }
-
+    XGM_stopPlay();
     PAL_fadeOutPalette(3,30,FALSE);
     //Cleanup
 
@@ -144,6 +147,8 @@ void menuScreen(){
     VDP_clearPlane(BG_B, TRUE);
     VDP_clearPlane(BG_A, TRUE);
 
+    
     SYS_doVBlankProcess();
+
 
 }
