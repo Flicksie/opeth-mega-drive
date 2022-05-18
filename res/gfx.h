@@ -15,5 +15,6 @@ extern const Image music_logo_c;
 extern const Image music_logo_d;
 extern const Image progress_bar;
 extern const Image opeth_img;
+extern const Image mikael_img;
 
 #endif // _RES_GFX_H_
