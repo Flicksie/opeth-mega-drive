@@ -17,7 +17,7 @@ Sprite* sega_spr_red_obj;
 void processStateMenu(){
 
     u16 timer = 200;
-    u16 timer2 = 30;
+    u16 timer2 = 90;
 
     //Init
     JOY_setEventHandler(&joyHandlerTitle);
@@ -33,14 +33,13 @@ void processStateMenu(){
     SPR_setAnim(opsega_obj, ANIM_STAND);
     SPR_setPosition(opsega_obj, 110, 80);
     SPR_update();
-    VDP_drawText("Opeth Sound Cartridge v0.1", 1, 26);
-    PAL_fadeInPalette(3,sega_spr.palette->data,60,FALSE);
-    while(timer2--){
+    PAL_fadeInPalette(3,sega_spr.palette->data,60,TRUE);
+    while( currentState == STATE_LOGO & timer2--){
         SYS_doVBlankProcess();
     };
     PAL_fadePalette(3,sega_spr.palette->data,sega_spr_red.palette->data,20,TRUE);
     timer2 = 10;
-    while(timer2--){
+    while(currentState == STATE_LOGO & timer2--){
         SYS_doVBlankProcess();
     };
     XGM_startPlayPCM(AKER_SEGA,1,SOUND_PCM_CH2);
