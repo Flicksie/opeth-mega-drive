@@ -45,9 +45,12 @@ void processStateMenu(){
     };
     XGM_startPlayPCM(AKER_SEGA,1,SOUND_PCM_CH2);
 
-
+   
     //Update
     while(currentState == STATE_LOGO){
+
+       
+
         SPR_update();
         SYS_doVBlankProcess();
         timer--;

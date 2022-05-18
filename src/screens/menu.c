@@ -6,13 +6,15 @@
 #include "xgm.h"
 #include "music.h"
 
+#include "joy_handler.h"
+
 
 int cursor_position;
 
 int X_POS_MENU = 15;
 int Y_POS_MENU = 24;
 
-
+#define DELIVERANCE 64
 
 
 void joyHandlerMenu(u16 joy, u16 changed, u16 state)
@@ -43,6 +45,13 @@ void joyHandlerMenu(u16 joy, u16 changed, u16 state)
     }
 
 
+}
+
+void joy_actions(u16 j, u16 u, u16 s){
+
+    konami(j,u,s);
+    if (konamiSeq > 1) return;
+    joyHandlerMenu(j,u,s);
 }
 
 void menuScreen(){
@@ -76,14 +85,37 @@ void menuScreen(){
     VDP_drawText("Start Player", X_POS_MENU, Y_POS_MENU);
     VDP_drawText("Information", X_POS_MENU, Y_POS_MENU+1);
     JOY_init();
-    JOY_setEventHandler(&joyHandlerMenu);
+
+    
+    JOY_setEventHandler( &joy_actions );
+    
+    XGM_setPCM(DELIVERANCE, pcm_voice, sizeof(pcm_voice));
 
 
 
 
 
     while(currentState == STATE_MENU){
+
+        if (konamiPositive) {
+            PAL_fadeInPalette(1, palette_black, 10, FALSE);
+            VDP_clearPlane(WINDOW, TRUE);
+            VDP_drawImageEx(BG_B, &mikael_img, TILE_ATTR_FULL( PAL1, TRUE, FALSE, FALSE, TILE_USERINDEX), 8, 1, FALSE, TRUE);
+            konamiPositive = FALSE;
+
+            PAL_fadeInPalette(1, mikael_img.palette->data, 30, TRUE);
+            
+            XGM_startPlayPCM( DELIVERANCE ,1,SOUND_PCM_CH2);
+
+
+            VDP_setTextPalette(PAL0);
+            VDP_drawText("Start Player", X_POS_MENU, Y_POS_MENU);
+            VDP_drawText("Information", X_POS_MENU, Y_POS_MENU+1);
+        }
+  
         
+        if (konamiTimer > 0) konamiTimer--;
+        if (konamiTimer == 0) konamiSeq = 0;
         
 
         VDP_clearText(X_POS_MENU-1, Y_POS_MENU, 1);
