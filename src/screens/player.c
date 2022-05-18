@@ -46,7 +46,7 @@
 
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 6;
+vu16 numMusic = 7;
 
 const u16 gfx_palette[16] =
 {
