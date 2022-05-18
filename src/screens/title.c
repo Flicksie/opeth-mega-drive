@@ -34,12 +34,12 @@ void processStateMenu(){
     SPR_setPosition(opsega_obj, 110, 80);
     SPR_update();
     PAL_fadeInPalette(3,sega_spr.palette->data,60,TRUE);
-    while( currentState == STATE_LOGO & timer2--){
+    while( (currentState == STATE_LOGO) & timer2--){
         SYS_doVBlankProcess();
     };
     PAL_fadePalette(3,sega_spr.palette->data,sega_spr_red.palette->data,20,TRUE);
     timer2 = 10;
-    while(currentState == STATE_LOGO & timer2--){
+    while((currentState == STATE_LOGO )& timer2--){
         SYS_doVBlankProcess();
     };
     XGM_startPlayPCM(AKER_SEGA,1,SOUND_PCM_CH2);
