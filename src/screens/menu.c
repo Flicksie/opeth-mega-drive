@@ -6,7 +6,7 @@
 #include "xgm.h"
 #include "music.h"
 
-#include "joy_handler.h"
+#include "konami_code.h"
 
 
 int cursor_position;
@@ -50,7 +50,7 @@ void joyHandlerMenu(u16 joy, u16 changed, u16 state)
 
 void joy_actions(u16 j, u16 u, u16 s){
 
-    konami(j,u,s);
+    konamiInput(j,u,s);
     if (konamiSeq > 1) return;
     joyHandlerMenu(j,u,s);
 }
@@ -100,11 +100,11 @@ void menuScreen(){
 
     while(currentState == STATE_MENU){
 
-        if (konamiPositive) {
+        if (konamiTriggered) {
             PAL_fadeInPalette(1, palette_black, 10, FALSE);
             VDP_clearPlane(WINDOW, TRUE);
             VDP_drawImageEx(BG_B, &mikael_img, TILE_ATTR_FULL( PAL1, TRUE, FALSE, FALSE, TILE_USERINDEX), 8, 1, FALSE, TRUE);
-            konamiPositive = FALSE;
+            konamiTriggered = FALSE;
 
             PAL_fadeInPalette(1, mikael_img.palette->data, 30, TRUE);
             
@@ -117,8 +117,7 @@ void menuScreen(){
         }
   
         
-        if (konamiTimer > 0) konamiTimer--;
-        if (konamiTimer == 0) konamiSeq = 0;
+        konamiRoutine();
         
 
         VDP_clearText(X_POS_MENU-1, Y_POS_MENU, 1);
