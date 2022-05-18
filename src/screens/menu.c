@@ -51,7 +51,7 @@ void joyHandlerMenu(u16 joy, u16 changed, u16 state)
 void joy_actions(u16 j, u16 u, u16 s){
 
     konamiInput(j,u,s);
-    if (konamiSeq > 1) return;
+    if (konami_progress > 1) return;
     joyHandlerMenu(j,u,s);
 }
 
@@ -100,11 +100,11 @@ void menuScreen(){
 
     while(currentState == STATE_MENU){
 
-        if (konamiTriggered) {
+        if (konami_triggered) {
             PAL_fadeInPalette(1, palette_black, 10, FALSE);
             VDP_clearPlane(WINDOW, TRUE);
             VDP_drawImageEx(BG_B, &mikael_img, TILE_ATTR_FULL( PAL1, TRUE, FALSE, FALSE, TILE_USERINDEX), 8, 1, FALSE, TRUE);
-            konamiTriggered = FALSE;
+            konami_triggered = FALSE;
 
             PAL_fadeInPalette(1, mikael_img.palette->data, 30, TRUE);
             
