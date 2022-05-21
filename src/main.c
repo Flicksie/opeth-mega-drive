@@ -1,7 +1,6 @@
 #include <genesis.h>
 
 
-#include "joy_handler.h"
 #include "screen_state.h"
 #include "screens/title.h"
 #include "screens/player.h"
@@ -19,7 +18,9 @@ int main()
 {
     basicInit();
 
+
     while(1){
+
 
         switch(currentState){
             case STATE_LOGO:{
