@@ -206,26 +206,38 @@ static void drawAlbumArt(s16 index)
 
     SYS_disableInts();
     
-   //if (index % 13 == 0) art = music_logo_b;
+   //if (index % 13 == 0) art = art_morningrise;
       switch (index) {
 
         case 0:
-            art = music_logo;
+            art = art_damnation;
             break;
         case 1:
-            art = music_logo_b;
+            art = art_morningrise;
             break;
         case 2:
-            art = music_logo_c;
+            art = art_elden;
             break;
         case 3:
-            art = music_logo_d;
+            art = art_4;
+            break;
+        case 4:
+            art = art_ghost;
+            break;
+        case 5:
+            art = art_water;
+            break;
+        case 6:
+            art = art_palecomun;
+            break;
+        case 7:
+            art = art_elden;
             break;
         default: 
-            art = music_logo_c;
+            art = art_elden;
             break;        
     }
-    //else art = music_logo;
+    //else art = art_damnation;
     SYS_enableInts();    
     
     VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
@@ -319,8 +331,8 @@ static void preparePlayerState(u16 i){
     XGM_setForceDelayDMA(TRUE);
 
     // init some GFX var
-    tileIndexProgressBar = TILE_USERINDEX + bg.tileset->numTile + music_logo.tileset->numTile;
-    tileIndex = TILE_USERINDEX + bg.tileset->numTile + music_logo.tileset->numTile + progress_bar.tileset->numTile + starfield.tileset->numTile;
+    tileIndexProgressBar = TILE_USERINDEX + bg.tileset->numTile + art_damnation.tileset->numTile;
+    tileIndex = TILE_USERINDEX + bg.tileset->numTile + art_damnation.tileset->numTile + progress_bar.tileset->numTile + starfield.tileset->numTile;
 
     bgTileMap = unpackTileMap(bg.tilemap, NULL);
 
@@ -389,7 +401,7 @@ static void preparePlayerState(u16 i){
     // set white color for index 15
     palette[15] = 0xEEF;
     memcpy(&palette[1 * 16], gfx_palette, 16 * 2);
-    memcpy(&palette[2 * 16], music_logo.palette->data, 16 * 2);
+    memcpy(&palette[2 * 16], art_damnation.palette->data, 16 * 2);
     memcpy(&palette[3 * 16], shadow_mask_16.palette->data, 16 * 2);
     // set hilight/shadow operators to black color
     //palette[62] = 0x211;
@@ -543,11 +555,11 @@ static void drawStaticGUI()
 
     // General GUI & logo
     VDP_drawImageEx(WINDOW, &bg, TILE_ATTR_FULL(PAL0, TRUE, FALSE, FALSE, TILE_USERINDEX), 0, 0, FALSE, TRUE);
-    VDP_drawImageEx(WINDOW, &music_logo, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
+    VDP_drawImageEx(WINDOW, &art_damnation, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
     VDP_drawImageEx(WINDOW, &progress_bar, TILE_ATTR_FULL(PAL0, TRUE, FALSE, FALSE, tileIndexProgressBar), 9, 8, FALSE, TRUE);
     
     // starfield
-    //VDP_drawImageEx(BG_B, &starfield, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile + music_logo.tileset->numTile + progress_bar.tileset->numTile), 0, 0, FALSE, TRUE);
+    //VDP_drawImageEx(BG_B, &starfield, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile + art_damnation.tileset->numTile + progress_bar.tileset->numTile), 0, 0, FALSE, TRUE);
 
     // prepare 'bitTileMap' buffer for chips state rendering
     i = 0;

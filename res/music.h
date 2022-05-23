@@ -15,6 +15,6 @@ extern const u8 xgm_3[10496];
 extern const u8 xgm_4[346368];
 extern const u8 xgm_5[251392];
 extern const u8 xgm_6[156416];
-extern const u8 xgm_7[139008];
+extern const u8 xgm_7[168960];
 
 #endif // _RES_MUSIC_H_
