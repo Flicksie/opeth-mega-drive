@@ -7,5 +7,11 @@ out/
 *.wav
 *.res
 *.act
+*.lnk
+*.tsx
+*.ldtk
 
 xgm_*
+
+src/debug.S
+inc/debug.H
