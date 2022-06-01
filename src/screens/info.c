@@ -14,7 +14,7 @@ void joyHandler(u16 joy, u16 changed, u16 state)
 
 void infoScreen(){
 
-
+    //VDP_fadeInAll(PAL1, 30,TRUE);
     XGM_startPlay(wpane_mini);
 
     JOY_setEventHandler(NULL); 
@@ -22,7 +22,8 @@ void infoScreen(){
     JOY_setEventHandler(&joyHandler);
     VDP_loadFont(&font_default, DMA);
 
-
+    
+    PAL_setColor(15, 0xfff);
     PAL_setColor(47, 0x00f);
     PAL_setColor(31, 0x555);
     VDP_setTextPalette(PAL2);
