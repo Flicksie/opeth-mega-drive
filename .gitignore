@@ -13,5 +13,4 @@ out/
 
 xgm_*
 
-src/debug.S
-inc/debug.H
+
