@@ -1,5 +1,6 @@
 #include <genesis.h>
 
+#include "screen_state.h"
 #include "tracklist.h"
 #include "xgm_tool.h"
 #include "ym_state.h"
@@ -420,6 +421,7 @@ static void startPlay()
 
 static void stopPlay()
 {
+    XGM_pausePlay(); // avoid lingering channel bugs
     XGM_stopPlay();
     elapsed = -1;
     trackPlayedRawIndex = -1;
@@ -1731,8 +1733,7 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     // PCM 1
     if (pressed & BUTTON_X)
     {
-        XGM_setPCM(64, pcm_hat2, sizeof(pcm_hat2));
-        XGM_startPlayPCM(64, 1, SOUND_PCM_CH2);
+        //currentState = STATE_MENU;
     }
     // PCM 2
     if (pressed & BUTTON_Y)
@@ -1747,6 +1748,8 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     {
         XGM_setPCM(66, pcm_voice, sizeof(pcm_voice));
         XGM_startPlayPCM(66, 1, SOUND_PCM_CH4);
+        numMusic = 11;
+        buildShuffledList();
     }
 }
 
