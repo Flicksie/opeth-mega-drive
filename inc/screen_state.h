@@ -11,4 +11,7 @@ typedef enum
 
 GAME_STATE currentState;
 
+int globalSeed;
+void seedUpdate();
+
 #endif
