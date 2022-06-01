@@ -30,7 +30,6 @@
 #define REFRESH_CONTROL     (1 << 3)
 #define REFRESH_SHUFFLE     (1 << 4)
 
-
 #define SET_PIXEL(x, y, c)              \
 {                                       \
     u16 fx = (x) >> 1;                  \
@@ -47,7 +46,7 @@
 
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 11;
+vu16 numMusic = 10;
 
 const u16 gfx_palette[16] =
 {
@@ -199,35 +198,30 @@ static u8 psgTileBuffer[32*4*4];
 static u16 palette[64];
 
 s16 trackLast;
-const char DAMNATION[9] = "Damnation";
-
-
-
 static void drawAlbumArt(s16 index)
 {    
     Image art;
     if (trackLast == index) return;
-    trackLast = index;    
+    trackLast = index;
+
+    
     PAL_fadeOutPalette(2,20,FALSE);
 
-    SYS_disableInts();
-    
-    char albumName = trackInfo->gameName;
-    
+    char *albumName = trackInfo->gameName;
     art = art_elden;
-    if (albumName == "Damnation") art = art_damnation;
-    if (albumName == "Morningrise") art = art_morningrise;
-    if (albumName == "Deliverance") art = art_deliv;
-    if (albumName == "My Arms Your Hearse") art = art_4;
-    if (albumName == "Ghost Reveries") art = art_ghost;
-    if (albumName == "WaterShed") art = art_water;
-    if (albumName == "Pale Comunion") art = art_palecomun;
-    if (albumName == "Orchid") art = art_orchid;
-    if (albumName == "Damnation") art = art_damnation;
- 
-    //else art = art_damnation;
 
+    SYS_disableInts();    
+    if ( !strcmp(albumName,"Damnation")) art = art_damnation;
+    if ( !strcmp(albumName,"Morningrise")) art = art_morningrise;
+    if ( !strcmp(albumName,"Deliverance")) art = art_deliv;
+    if ( !strcmp(albumName,"My Arms Your Hearse")) art = art_4;
+    if ( !strcmp(albumName,"Ghost Reveries")) art = art_ghost;
+    if ( !strcmp(albumName,"Watershed")) art = art_water;
+    if ( !strcmp(albumName,"Pale Communion")) art = art_palecomun;
+    if ( !strcmp(albumName,"Orchid")) art = art_orchid;
+    if ( !strcmp(albumName,"Damnation")) art = art_damnation;
     SYS_enableInts();    
+    
     
     VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
     
@@ -1743,8 +1737,10 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     // PCM 2
     if (pressed & BUTTON_Y)
     {
-        XGM_setPCM(65, pcm_snare2, sizeof(pcm_snare2));
-        XGM_startPlayPCM(65, 1, SOUND_PCM_CH3);
+        //XGM_setPCM(65, pcm_snare2, sizeof(pcm_snare2));
+        //XGM_startPlayPCM(65, 1, SOUND_PCM_CH3);
+        numMusic = 11;
+        buildShuffledList();
     }
     // PCM 3
     if (pressed & BUTTON_Z)
