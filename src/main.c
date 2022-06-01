@@ -18,9 +18,9 @@ int main()
 {
     basicInit();
 
-
     while(1){
 
+        seedUpdate();
 
         switch(currentState){
             case STATE_LOGO:{
