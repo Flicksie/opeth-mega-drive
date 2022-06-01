@@ -201,10 +201,10 @@ static u16 palette[64];
 s16 trackLast;
 static void drawAlbumArt(s16 index)
 {    
-    Image art;
     if (trackLast == index) return;
     trackLast = index;
 
+    Image art;
     
     PAL_fadeOutPalette(2,20,FALSE);
 
