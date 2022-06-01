@@ -209,19 +209,19 @@ static void drawAlbumArt(s16 index)
     PAL_fadeOutPalette(2,20,FALSE);
 
     char *albumName = trackInfo->gameName;
-    art = art_elden;
 
-    SYS_disableInts();    
-    if ( !strcmp(albumName,"Damnation")) art = art_damnation;
-    if ( !strcmp(albumName,"Morningrise")) art = art_morningrise;
-    if ( !strcmp(albumName,"Deliverance")) art = art_deliv;
+    art = art_elden;
+    SYS_disableInts();
+    if ( !strcmp(albumName,"Damnation"))        art = art_damnation;
+    if ( !strcmp(albumName,"Morningrise"))      art = art_morningrise;
+    if ( !strcmp(albumName,"Deliverance"))      art = art_deliv;
     if ( !strcmp(albumName,"My Arms Your Hearse")) art = art_4;
-    if ( !strcmp(albumName,"Ghost Reveries")) art = art_ghost;
-    if ( !strcmp(albumName,"Watershed")) art = art_water;
-    if ( !strcmp(albumName,"Pale Communion")) art = art_palecomun;
-    if ( !strcmp(albumName,"Orchid")) art = art_orchid;
-    if ( !strcmp(albumName,"Damnation")) art = art_damnation;
-    SYS_enableInts();    
+    if ( !strcmp(albumName,"Ghost Reveries"))   art = art_ghost;
+    if ( !strcmp(albumName,"Watershed"))        art = art_water;
+    if ( !strcmp(albumName,"Pale Communion"))   art = art_palecomun;
+    if ( !strcmp(albumName,"Orchid"))           art = art_orchid;
+    if ( !strcmp(albumName,"Damnation"))        art = art_damnation;
+    SYS_enableInts();
     
     
     VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
