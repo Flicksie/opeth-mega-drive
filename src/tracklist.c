@@ -13,10 +13,10 @@ const u8* const xgm_musics[MAX_MUSIC] =
     xgm_5,
     xgm_6,
     xgm_7,
-    //xgm_8,
-    //xgm_9,
-    //xgm_10,
-    //xgm_11,
+    xgm_8,
+    xgm_9,
+    xgm_10,
+    xgm_11,
     //xgm_12,
    // xgm_13
     //xgm_14
