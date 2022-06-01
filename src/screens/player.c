@@ -30,6 +30,7 @@
 #define REFRESH_CONTROL     (1 << 3)
 #define REFRESH_SHUFFLE     (1 << 4)
 
+
 #define SET_PIXEL(x, y, c)              \
 {                                       \
     u16 fx = (x) >> 1;                  \
@@ -46,7 +47,7 @@
 
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 7;
+vu16 numMusic = 11;
 
 const u16 gfx_palette[16] =
 {
@@ -131,7 +132,7 @@ static u16 inverseIndexes[MAX_MUSIC];
 static u16 planTrackIndexesCache[64];
 
 // current track info
-static s16 trackLast;
+
 static s16 trackPlayedRawIndex;
 static s16 trackPlayed;
 static s16 trackIndexList;
@@ -197,52 +198,40 @@ static u8 psgTileBuffer[32*4*4];
 
 static u16 palette[64];
 
+s16 trackLast;
+const char DAMNATION[9] = "Damnation";
+
+
+
 static void drawAlbumArt(s16 index)
 {    
-    if (trackLast == index) return;
-    trackLast = index;
     Image art;
+    if (trackLast == index) return;
+    trackLast = index;    
     PAL_fadeOutPalette(2,20,FALSE);
 
     SYS_disableInts();
     
-   //if (index % 13 == 0) art = art_morningrise;
-      switch (index) {
-
-        case 0:
-            art = art_damnation;
-            break;
-        case 1:
-            art = art_morningrise;
-            break;
-        case 2:
-            art = art_elden;
-            break;
-        case 3:
-            art = art_4;
-            break;
-        case 4:
-            art = art_ghost;
-            break;
-        case 5:
-            art = art_water;
-            break;
-        case 6:
-            art = art_palecomun;
-            break;
-        case 7:
-            art = art_elden;
-            break;
-        default: 
-            art = art_elden;
-            break;        
-    }
+    char albumName = trackInfo->gameName;
+    
+    art = art_elden;
+    if (albumName == "Damnation") art = art_damnation;
+    if (albumName == "Morningrise") art = art_morningrise;
+    if (albumName == "Deliverance") art = art_deliv;
+    if (albumName == "My Arms Your Hearse") art = art_4;
+    if (albumName == "Ghost Reveries") art = art_ghost;
+    if (albumName == "WaterShed") art = art_water;
+    if (albumName == "Pale Comunion") art = art_palecomun;
+    if (albumName == "Orchid") art = art_orchid;
+    if (albumName == "Damnation") art = art_damnation;
+ 
     //else art = art_damnation;
+
     SYS_enableInts();    
     
     VDP_drawImageEx(WINDOW, &art, TILE_ATTR_FULL(PAL2, TRUE, FALSE, FALSE, TILE_USERINDEX + bg.tileset->numTile), 21, 0, FALSE, TRUE);
     
-    PAL_fadeInPalette(2,art.palette->data,60,TRUE);
+    PAL_fadeInPalette(2,art.palette->data,30,TRUE);
     
 };
 
@@ -305,7 +294,7 @@ static void preparePlayerState(u16 i){
     shuffle = FALSE;
     bgEnabled = FALSE;
     hidePlaylist = FALSE;
-    loop = 2;
+    loop = 1;
     frameToParse = 0;
     frameToUpdate = 0;
     joyState = 0;
@@ -419,7 +408,7 @@ static void startPlay()
     trackInfo = getTrackInfo(shuffledIndexes[trackPlayed]);
     // move to played track
     trackIndexList = trackPlayedRawIndex;
-    drawAlbumArt(trackPlayed);
+    
     
     elapsed = 0;
     paused = FALSE;
@@ -432,6 +421,7 @@ static void startPlay()
     XGM_startPlay(xgm_musics[shuffledIndexes[trackPlayed]]);
     refresh |= REFRESH_TRACKLIST | REFRESH_TRACKINFO | REFRESH_CONTROL;
     wantStartPlay = FALSE;
+    drawAlbumArt(trackPlayed);
 }
 
 static void stopPlay()
@@ -872,7 +862,7 @@ static void drawTrackInfo()
             strcat(str, ".");
         }
         else strcpy(str, trackInfo->date);
-
+        VDP_drawText(str, 32, 11);
 
         
 
