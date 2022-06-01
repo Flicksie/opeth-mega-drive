@@ -16,6 +16,8 @@ extern const Image art_4;
 extern const Image art_ghost;
 extern const Image art_palecomun;
 extern const Image art_water;
+extern const Image art_deliv;
+extern const Image art_orchid;
 extern const Image progress_bar;
 extern const Image opeth_img;
 extern const Image mikael_img;
