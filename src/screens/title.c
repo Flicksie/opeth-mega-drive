@@ -55,7 +55,7 @@ void processStateMenu(){
     //Update
     while(currentState == STATE_LOGO){
 
-       
+        seedUpdate();
 
         SPR_update();
         SYS_doVBlankProcess();
