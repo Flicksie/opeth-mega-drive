@@ -1740,7 +1740,7 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     {
         //XGM_setPCM(65, pcm_snare2, sizeof(pcm_snare2));
         //XGM_startPlayPCM(65, 1, SOUND_PCM_CH3);
-        numMusic = 11;
+        numMusic = 12;
         buildShuffledList();
     }
     // PCM 3
@@ -1748,7 +1748,7 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     {
         XGM_setPCM(66, pcm_voice, sizeof(pcm_voice));
         XGM_startPlayPCM(66, 1, SOUND_PCM_CH4);
-        numMusic = 11;
+        numMusic = 12;
         buildShuffledList();
     }
 }
