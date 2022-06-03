@@ -14,13 +14,13 @@ A compilation of my Opeth fans friends favorite songs transcribed for playing on
 
 #### Planned additions (if I don't run out of cartridge space):
 
- - [ ]  Eternal Rains will Come
+ - [x]  Eternal Rains will Come
  - [ ]  Advent
- - [ ]  Deliverance
+ - [x]  Deliverance
  - [ ]  Heart in Hand
- - [ ]  Silhouette
- - [ ]  For Absent Friends
- - [ ]  In Mist she was Standing
+ - [x]  Silhouette
+ - [x]  For Absent Friends
+ - [x]  In Mist she was Standing
 
 
 *Some songs might be cut here and there to save some cartridge space (or my sanity while transcribing them)*
