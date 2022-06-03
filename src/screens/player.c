@@ -928,9 +928,9 @@ static void drawShortTrackInfo(s16 planIndex, u16 index)
     info = getTrackInfo(shuffledIndexes[index]);
 
     // draw track number
-    uintToStr(index, str, 2);
+    uintToStr(index + 1, str, 2);
     // separation
-    str[2] = ' ';
+    str[2] = '~';
 
 
     src = info->trackName;
