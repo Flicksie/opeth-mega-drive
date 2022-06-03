@@ -47,7 +47,7 @@
 
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 10;
+vu16 numMusic = 11;
 
 const u16 gfx_palette[16] =
 {
@@ -552,21 +552,21 @@ static void drawStaticGUI()
 
     // Z80 area
     for(y = 0; y < 4; y++, i++)
-        VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 1, 21 + y);
+        VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 1, 22 + y);
     // YM area
     for(x = 0; x < 6; x++)
         for(sx = 0; sx < 3; sx++)
             for(y = 0; y < 4; y++, i++)
-                VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 4 + (x * 3) + sx, 21 + y);
+                VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 4 + (x * 3) + sx, 22 + y);
     // PCM area
     for(x = 0; x < 4; x++)
         for(sx = 0; sx < 3; sx++)
             for(y = 0; y < 4; y++, i++)
-                VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 23 + (x * 3) + sx, 21 + y);
+                VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 23 + (x * 3) + sx, 22 + y);
     // PSG area
     for(x = 0; x < 4; x++)
         for(y = 0; y < 4; y++, i++)
-            VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 36 + x, 21 + y);
+            VDP_setTileMapXY(WINDOW, TILE_ATTR_FULL(PAL1, TRUE, FALSE, FALSE, tileIndex + i), 36 + x, 22 + y);
 
     // prepare progress bar rendering buffer
     tileset = unpackTileSet(progress_bar.tileset, NULL);
