@@ -8,9 +8,9 @@ const ROMHeader rom_header = {
     "SEGA MEGA DRIVE ",
 #endif
     "(C)FLK 2022.MAY ",
-    "OPETH MUSIC CARTRIDGE                           ",
-    "OPETH MUSIC CARTRIDGE                           ",
-    "GM 05502205-12",
+    "OPETH MUSIC COLLECTION                          ",
+    "OPETH MUSIC COLLECTION                          ",
+    "GM FLK22001-00",
 //       ID YR # REV
     0x000,
     "J6              ",
@@ -27,6 +27,6 @@ const ROMHeader rom_header = {
     0x00200000,
     0x0020FFFF,
     "            ",
-    "DEMO DEMO WAWA                          ",
+    "OPETH MUSIC COLLECTION                  ",
     "JUE             "
 };
