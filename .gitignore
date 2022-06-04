@@ -1,6 +1,7 @@
 *.bat
 .vscode
-out/
+out/*.*
+out/src
 *.png
 *.vgm
 *.psd
@@ -10,6 +11,11 @@ out/
 *.lnk
 *.tsx
 *.ldtk
+*.gif
+
+!bg2.ACT
+!*.dfm
+!art_*.png
 
 xgm_*
 
