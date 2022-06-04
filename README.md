@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/12115973/168597300-e35c51d3-83f1-46c4-93c1-7f21c54fa37f.png" width="350px"> <img src="https://user-images.githubusercontent.com/12115973/171997758-10450aac-13f7-4a76-8c95-05bb43b2d0d5.png" width="350px">
 
 
-A compilation of my Opeth fans friends favorite songs transcribed for playing on the Mega Drive sound chip. 
+A compilation of my friends' favorite Opeth songs transcribed for playing on the Mega Drive sound chip. 
 
 ### Current setlist:
 - Windowpane
@@ -37,6 +37,14 @@ I'll eventually upload everything once I'm mostly done with it
 You can still find a working ROM in the Releases. 
 
 **This ROM was tested and works on real hardware.** 
+
+
+
+*PS there's also an actual cartridge*
+
+![image](https://user-images.githubusercontent.com/12115973/171999805-5bee6acf-c50b-4c14-a2a3-6a7cd89574f4.png)
+
+
 
 ---
 
