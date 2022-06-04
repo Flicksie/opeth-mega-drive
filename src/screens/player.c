@@ -47,7 +47,7 @@
 
 
 // make it in a volatile variable so compiler won't optimize to constant in code
-vu16 numMusic = 11;
+vu16 numMusic = 10;
 
 const u16 gfx_palette[16] =
 {
@@ -388,7 +388,7 @@ static void preparePlayerState(u16 i){
     memcpy(&palette[2 * 16], art_damnation.palette->data, 16 * 2);
     memcpy(&palette[3 * 16], shadow_mask_16.palette->data, 16 * 2);
     // set hilight/shadow operators to black color
-    //palette[62] = 0x211;
+    palette[62] = 0x211;
     //palette[63] = 0x211;
 
     // palette fading
@@ -1740,7 +1740,7 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     {
         //XGM_setPCM(65, pcm_snare2, sizeof(pcm_snare2));
         //XGM_startPlayPCM(65, 1, SOUND_PCM_CH3);
-        numMusic = 12;
+        numMusic = 11;
         buildShuffledList();
     }
     // PCM 3
@@ -1748,7 +1748,7 @@ static void joyEvent(u16 joy, u16 changed, u16 state)
     {
         XGM_setPCM(66, pcm_voice, sizeof(pcm_voice));
         XGM_startPlayPCM(66, 1, SOUND_PCM_CH4);
-        numMusic = 12;
+        numMusic = 11;
         buildShuffledList();
     }
 }
@@ -1827,6 +1827,11 @@ void hint()
 
     preparePlayerState(i);
 
+    //VDP_setPalette(PAL1, aux_pal.palette->data);
+    //VDP_setPalette(PAL1,  );
+    u16 pal_transf[16];
+    
+
     while(1)
     {
         while (frameToParse > 0)
@@ -1882,6 +1887,10 @@ void hint()
 
         SPR_update();
         drawChipsStates();
+        
+        //PAL_getPalette(PAL2,pal_transf);
+        VDP_setPalette(PAL1, aux_pal.palette->data );
+
         if (bgEnabled) updateBGScroll();
         VDP_setVerticalScroll(BG_B, 32 * 8);
 
