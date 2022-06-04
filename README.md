@@ -1,6 +1,7 @@
 # Opeth Music Cartridge for Sega Mega Drive
 
-![image](https://user-images.githubusercontent.com/12115973/168597300-e35c51d3-83f1-46c4-93c1-7f21c54fa37f.png)
+<img src="https://user-images.githubusercontent.com/12115973/168597300-e35c51d3-83f1-46c4-93c1-7f21c54fa37f.png" width="350px"> <img src="https://user-images.githubusercontent.com/12115973/171997758-10450aac-13f7-4a76-8c95-05bb43b2d0d5.png" width="350px">
+
 
 A compilation of my Opeth fans friends favorite songs transcribed for playing on the Mega Drive sound chip. 
 
@@ -10,7 +11,12 @@ A compilation of my Opeth fans friends favorite songs transcribed for playing on
 - When
 - Ghost of Perdition
 - The Lotus Eater
-- Elden Ring Theme *(Test track I forgot in there, will be removed (or not) in the future)*
+- Deliverance
+- Eternal Rains will Come
+- Silhouette
+- For Absent Friends
+- In Mist she was Standing
+- +1
 
 #### Planned additions (if I don't run out of cartridge space):
 
@@ -31,3 +37,12 @@ I'll eventually upload everything once I'm mostly done with it
 You can still find a working ROM in the Releases. 
 
 **This ROM was tested and works on real hardware.** 
+
+---
+
+
+*Try the Konami Code at the title screen*
+
+
+<img src="https://user-images.githubusercontent.com/12115973/171998399-2a4be64f-34e4-4596-a928-4d414aea10e3.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998399-2a4be64f-34e4-4596-a928-4d414aea10e3.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998402-316d7924-9940-4b5d-b797-64c020b7c1be.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998402-316d7924-9940-4b5d-b797-64c020b7c1be.gif" height="32px"> 
+<img src="https://user-images.githubusercontent.com/12115973/171998403-649647d6-76dd-447f-8653-2342132b7188.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998404-b218fffc-18b1-47c7-8b52-238edd874a44.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998403-649647d6-76dd-447f-8653-2342132b7188.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998404-b218fffc-18b1-47c7-8b52-238edd874a44.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998401-7e2623ac-48c1-4705-93c8-b1286a617f88.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998400-cec85263-f9a7-4925-ba68-b61d59e4bfba.gif" height="32px"> <img src="https://user-images.githubusercontent.com/12115973/171998405-8dc4fcbc-116e-4fee-8e78-8090cf52161a.gif" height="32px">
