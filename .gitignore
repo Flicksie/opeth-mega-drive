@@ -29,7 +29,16 @@ out/src
 !res/gfx/sega_red.png
 !res/gfx/progress.png
 !res/gfx/progress.png
+!res/gfx/font.png
+!res/gfx/shadow*.png
 !res/sfx/*
+!res/music/*.*
+res/music/opeth_mist.vgm
+res/music/rrr.vgm
+res/music/gtr.vgm
+res/music/devilorchard.vgm
+res/music/*.lnk
+
 
 
 xgm_*
