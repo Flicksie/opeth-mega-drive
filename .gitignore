@@ -13,9 +13,24 @@ out/src
 *.ldtk
 *.gif
 
+// Whitelist actually used assets
 !bg2.ACT
+!pal3.ACT
 !*.dfm
 !art_*.png
+!res/*.res
+!res/gfx/auxiliary-palette.png
+!res/gfx/mikael.png
+!res/gfx/opeth.png
+!res/gfx/cursor.png
+!res/gfx/left_right.png
+!res/gfx/bgo.png
+!res/gfx/sega.png
+!res/gfx/sega_red.png
+!res/gfx/progress.png
+!res/gfx/progress.png
+
+
 
 xgm_*
 
