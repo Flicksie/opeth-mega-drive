@@ -34,7 +34,7 @@ A compilation of my friends' favorite Opeth songs transcribed for playing on the
 
 Currently the resource folders are all missing so unfortunately you can't build the ROM yourself :( 
 I'll eventually upload everything once I'm mostly done with it
-You can still find a working ROM in the Releases. 
+You can still find a working ROM in the Releases. Some songs might be pretty buggy with the channels, I'll be sorting these out soon enough, at least before I actually make the definitive cartridges.
 
 **This ROM was tested and works on real hardware.** 
 
