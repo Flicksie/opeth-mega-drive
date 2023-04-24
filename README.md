@@ -40,7 +40,7 @@ You can still find a working ROM in the Releases. Some songs might be pretty bug
 
 
 
-*PS there's also an actual cartridge*
+[*PS there's also an actual cartridge*](https://flosk.bandcamp.com/merch/opeth-music-collection-physical-cartridge)
 
 ![image](https://user-images.githubusercontent.com/12115973/171999805-5bee6acf-c50b-4c14-a2a3-6a7cd89574f4.png)
 
